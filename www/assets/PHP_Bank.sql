@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 10 jan. 2023 à 15:30
+-- Généré le : mer. 11 jan. 2023 à 08:15
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `Bank`
+-- Base de données : `PHP_Bank`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,9 @@ CREATE TABLE `bankaccounts` (
 --
 
 CREATE TABLE `currencies` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `value` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
