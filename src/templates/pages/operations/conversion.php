@@ -19,17 +19,17 @@ ob_start();
 		<div class="form-inline">
 			<label>Euro:</label>
 			<input class="form-control" type="text" name="txt_digit"/>
-			<label>choix de la money: </label>
+			<label>Choix de la monnaie : </label>
 			<select name="currency" class="form-control">
-				<option value="">Selection de l'option</option>
-				<option value="Dollar American">Dollar american</option>
-				<option value="livre steling">livre sterling</option>
+				<option value="">Selection de la monnaie</option>
+				<option value="Dollar americain">Dollar americain</option>
+				<option value="Livre Sterling">Livre Sterling</option>
 				<option value="Dollar canadien">Dollar canadien</option>
 				<option value="Dollar australien">Dollar australien</option>
-				<option value="yen japonais">yen japonais</option>
+				<option value="Yen japonais">Yen japonais</option>
 			</select>
 			<br /><br />
-			<center><button type="submit" name="btn_submit" class="btn btn-primary form-control" style="width:30%;">Convertion</button></center>
+			<center><button type="submit" name="btn_submit" class="btn btn-primary form-control" style="width:30%;">Conversion</button></center>
 			<br />
 			
 		</div>

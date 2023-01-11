@@ -3,7 +3,7 @@ h1 {
     font-size: 3em;
 }
 
-#signup_form {
+#login_form {
     text-align: center;
     border: 2px solid black;
     width: fit-content;

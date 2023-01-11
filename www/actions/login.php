@@ -13,7 +13,7 @@ if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) === false) {
 // Verifier si utilisateur existe en DB
 $user = $userManager->getByEmail($_POST['email']);
 if ($user === false) {
-	error_die('Mot de passe incorrect', '/?page=login');
+	error_die(('Mot de passe incorrect (l\'utilisateur n\'existe pas)'), '/?page=login');
 }
 // Verifier le mot de passe
 if (!$user->verifyPassword($_POST['password'])) {
