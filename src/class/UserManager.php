@@ -8,9 +8,9 @@ class UserManager {
 	}
 
 	public function insert(User $user) {
-		$stmh = $this->db->prepare('INSERT INTO users(email, password, role, last_ip) VALUES(?, ?, ?, ?)');
+		$stmh = $this->db->prepare('INSERT INTO users(fullname, email, password, role, last_ip) VALUES(?, ?, ?, ?, ?)');
 		$stmh->execute([
-			$user->email, $user->password, $user->role, $user->last_ip
+			$user->fullname, $user->email, $user->password, $user->role, $user->last_ip
 		]);
 		return $this->db->lastInsertId();
 	}
