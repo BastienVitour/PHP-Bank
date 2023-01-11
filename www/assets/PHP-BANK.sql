@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 11 jan. 2023 à 08:41
+-- Généré le : mer. 11 jan. 2023 à 08:47
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -114,7 +114,8 @@ CREATE TABLE `withdrawals` (
 --
 ALTER TABLE `bankaccounts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_currencies` (`id_currencies`);
 
 --
 -- Index pour la table `currencies`
@@ -127,7 +128,8 @@ ALTER TABLE `currencies`
 --
 ALTER TABLE `deposits`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_bank_account` (`id_bank_account`);
+  ADD KEY `id_bank_account` (`id_bank_account`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- Index pour la table `transactions`
@@ -135,7 +137,8 @@ ALTER TABLE `deposits`
 ALTER TABLE `transactions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `receiver_account` (`receiver_account`),
-  ADD KEY `sender_account` (`sender_account`);
+  ADD KEY `sender_account` (`sender_account`),
+  ADD KEY `id_currencies` (`id_currencies`);
 
 --
 -- Index pour la table `users`
@@ -148,7 +151,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `withdrawals`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_bank_account` (`id_bank_account`);
+  ADD KEY `id_bank_account` (`id_bank_account`),
+  ADD KEY `admin_id` (`admin_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -198,26 +202,30 @@ ALTER TABLE `withdrawals`
 -- Contraintes pour la table `bankaccounts`
 --
 ALTER TABLE `bankaccounts`
-  ADD CONSTRAINT `bankaccounts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `bankaccounts_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `bankaccounts_ibfk_2` FOREIGN KEY (`id_currencies`) REFERENCES `currencies` (`id`);
 
 --
 -- Contraintes pour la table `deposits`
 --
 ALTER TABLE `deposits`
-  ADD CONSTRAINT `deposits_ibfk_1` FOREIGN KEY (`id_bank_account`) REFERENCES `bankaccounts` (`id`);
+  ADD CONSTRAINT `deposits_ibfk_1` FOREIGN KEY (`id_bank_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `deposits_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 
 --
 -- Contraintes pour la table `transactions`
 --
 ALTER TABLE `transactions`
   ADD CONSTRAINT `transactions_ibfk_1` FOREIGN KEY (`receiver_account`) REFERENCES `bankaccounts` (`id`),
-  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`sender_account`) REFERENCES `bankaccounts` (`id`);
+  ADD CONSTRAINT `transactions_ibfk_2` FOREIGN KEY (`sender_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `transactions_ibfk_3` FOREIGN KEY (`id_currencies`) REFERENCES `currencies` (`id`);
 
 --
 -- Contraintes pour la table `withdrawals`
 --
 ALTER TABLE `withdrawals`
-  ADD CONSTRAINT `withdrawals_ibfk_1` FOREIGN KEY (`id_bank_account`) REFERENCES `bankaccounts` (`id`);
+  ADD CONSTRAINT `withdrawals_ibfk_1` FOREIGN KEY (`id_bank_account`) REFERENCES `bankaccounts` (`id`),
+  ADD CONSTRAINT `withdrawals_ibfk_2` FOREIGN KEY (`admin_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
