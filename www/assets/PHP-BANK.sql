@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mer. 11 jan. 2023 à 08:15
+-- Généré le : mer. 11 jan. 2023 à 08:41
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `PHP_Bank`
+-- Base de données : `PHP-BANK`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `bankaccounts` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `money` int(11) NOT NULL
+  `money` int(11) NOT NULL,
+  `id_currencies` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -54,7 +55,9 @@ CREATE TABLE `currencies` (
 CREATE TABLE `deposits` (
   `id` int(11) NOT NULL,
   `id_bank_account` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `value` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `operation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -67,7 +70,9 @@ CREATE TABLE `transactions` (
   `id` int(11) NOT NULL,
   `sender_account` int(11) NOT NULL,
   `receiver_account` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `value` int(11) NOT NULL,
+  `id_currencies` int(11) NOT NULL,
+  `operation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -95,7 +100,9 @@ CREATE TABLE `users` (
 CREATE TABLE `withdrawals` (
   `id` int(11) NOT NULL,
   `id_bank_account` int(11) NOT NULL,
-  `value` int(11) NOT NULL
+  `value` int(11) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `operation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
