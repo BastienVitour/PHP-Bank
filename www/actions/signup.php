@@ -28,16 +28,6 @@ if ($alreadyUser !== false) {
     error_die('Déjà inscrit', '/?page=signup');
 }
 
-/*$stmh = $db->prepare("INSERT INTO users(fullname, email, password, role, last_ip) VALUES(?, ?, ?, ?, ?)");
-$stmh->execute([
-    $_POST['fullname'],
-    $_POST['email'],
-    hash('sha256', $_POST['password']),
-    1,
-    $_SERVER['REMOTE_ADDR']
-]);*/
-
-
 $user = User::create($_POST['fullname'], $_POST['email'], $_POST['password'], 1, $_SERVER['REMOTE_ADDR']);
 $userId = $userManager->insert($user);
 
