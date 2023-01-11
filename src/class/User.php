@@ -15,12 +15,13 @@ class User {
         $user->fullname = $fullname;
         $user->email = $email;
         $user->password = hash('sha256', $password);
+        $user->role = $role;
         $user->last_ip = $ip;
         return $user;
     }
 
     public function verifyPassword($password) {
-        $hashPassword = $hash('sha256', $password);
+        $hashPassword = hash('sha256', $password);
         return ($hashPassword === $this->password);
     }
 

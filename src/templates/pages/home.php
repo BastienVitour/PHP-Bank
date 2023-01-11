@@ -1,9 +1,8 @@
 <?php 
 
-$page_title = "Accueil - MonSite.com";
+require_once __DIR__ . '/../../init.php';
 
-//$niceData = htmlspecialchars("Bonjour je tente une piraterie <script>alert('hacked')</script>");
-//$badData = "Bonjour je tente une piraterie <script>alert('hacked')</script>";
+$page_title = "Accueil";
 
 ob_start();
 
@@ -12,6 +11,12 @@ ob_start();
 <h1>Titre de la page d'accueil</h1>
 
 <?php
+
+echo '<p>'.var_dump($user).'</p>';
+
+if (isset($_SESSION['user_id'])) {
+    echo '<p>'.$_SESSION['user_id'].'</p>';
+}
 
 $page_content = ob_get_clean();
 
