@@ -6,19 +6,19 @@ ob_start();
 
 ?>
 
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
+<nav >
+	<div>
 		
 	</div>
 </nav>
-<div class="col-md-3"></div>
-<div class="col-md-6 well">
-	<h3 class="text-primary">Euro convertiseur</h3>
+<div></div>
+<div>
+	<h3 >Euro convertiseur</h3>
 	<hr style="border-top:1px dotted #000;"/>
 	<form method="POST" action="">
-		<div class="form-inline">
+		<div >
 			<label>Euro:</label>
-			<input class="form-control" type="text" name="txt_digit"/>
+			<input type="text" name="txt_digit"/>
 			<label>Choix de la monnaie : </label>
 			<select name="currency" class="form-control">
 				<option value="">Selection de la monnaie</option>
