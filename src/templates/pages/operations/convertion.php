@@ -34,6 +34,27 @@ ob_start();
 			
 		</div>
 		
+		<div>
+	<h3 >Bitcoin convertiseur</h3>
+	<hr style="border-top:1px dotted #000;"/>
+	<form method="POST" action="">
+		<div >
+			<label>Bitcoin:</label>
+			<input type="text" name="txt_digit"/>
+			<label>Choix de la monnaie : </label>
+			<select name="currency" class="form-control">
+				<option value="">Selection de la monnaie</option>
+				<option value="Dollar americain">Dollar americain</option>
+				<option value="Livre Sterling">Livre Sterling</option>
+				<option value="Euro">Euro</option>
+				<option value="Dollar australien">Dollar australien</option>
+				<option value="Yen japonais">Yen japonais</option>
+			</select>
+			<br /><br />
+			<center><button type="submit" name="btn_submit" class="btn btn-primary form-control" style="width:30%;">Conversion</button></center>
+			<br />
+			
+		</div>
 	</form>
 </div>
 
@@ -44,27 +65,27 @@ if(ISSET($_POST['btn_submit'])){
 	if($digit != ""){
 		switch($currency){
 			case "Dollar americain":
-				$output = $digit * 1.074;
+				$output = $digit * 18102.40;
 				echo"<center><label class='text-success' style='font-size:25px;'>$".$output."</label></center>";
 			break;
 			
 			case "Livre Sterling":
-				$output = $digit * 0.89;
+				$output = $digit * 14905.52;
 				echo"<center><label class='text-success' style='font-size:25px;'>£".$output."</label></center>";
 			break;
 			
-			case "Bitcoin":
-				$output = $digit * 0.000059;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#8383;".$output."</label></center>";
+			case "Euro":
+				$output = $digit * 16912.94;
+				echo"<center><label class='text-success' style='font-size:25px;'>€;".$output."</label></center>";
 			break;
 			
 			case "Dollar australien":
-				$output = $digit * 1.56;
+				$output = $digit * 26261.79;
 				echo"<center><label class='text-success' style='font-size:25px;'>$;".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":
-				$output = $digit * 142.6;
+				$output = $digit * 2383488.70;
 				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
 			break;
 		}
