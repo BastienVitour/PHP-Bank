@@ -1,11 +1,10 @@
 <?php
 
-if(isset($_POST['submit'])){
-    $money += $_POST['retrait'];
-}
+ob_start();
+
 ?>
 
-<form action="">
+<form action="/actions/withdrawal.php" method="post">
     <div>
         <label for="text">Retrait d'argent :</label>
         <select name="retrait" id="retire">
@@ -22,3 +21,7 @@ if(isset($_POST['submit'])){
     <button type="submit">Retirer l'argent</button>
 
 </form>
+
+<?php
+
+$page_content = ob_get_clean();
