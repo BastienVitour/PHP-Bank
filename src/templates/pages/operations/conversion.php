@@ -42,12 +42,12 @@ if(ISSET($_POST['btn_submit'])){
 	$currency = $_POST['currency'];
 	if($digit != ""){
 		switch($currency){
-			case "Dollar American":
+			case "Dollar americain":
 				$output = $digit * 1.074;
 				echo"<center><label class='text-success' style='font-size:25px;'>$".$output."</label></center>";
 			break;
 			
-			case "livre steling":
+			case "Livre Sterling":
 				$output = $digit * 0.89;
 				echo"<center><label class='text-success' style='font-size:25px;'>£".$output."</label></center>";
 			break;
@@ -62,7 +62,7 @@ if(ISSET($_POST['btn_submit'])){
 				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
 			break;
 			
-			case "yen japonais":
+			case "Yen japonais":
 				$output = $digit * 142.6;
 				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
 			break;
