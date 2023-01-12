@@ -16,16 +16,16 @@ $page_content = "";
 $page_scripts = "";
 
 //Inclure les classes
-//require_once __DIR__ . '/class/ContactForm.php';
 require_once __DIR__ . '/class/User.php';
+require_once __DIR__ . '/class/Account.php';
 
 //Inclure les managers
-//require_once __DIR__ . '/class/ContactFormManager.php';
 require_once __DIR__ . '/class/UserManager.php';
+require_once __DIR__ . '/class/AccountManager.php';
 
 //Initialiser les managers
-//$contactFormManager = new ContactFormManager($db);
 $userManager = new UserManager($db);
+$accountManager = new AccountManager($db);
 
 //Session & Auth
 $user = false;
