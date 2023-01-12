@@ -33,7 +33,6 @@ ob_start();
 			<br />
 			
 		</div>
-		
 	</form>
 </div>
 
@@ -55,17 +54,17 @@ if(ISSET($_POST['btn_submit'])){
 			
 			case "Bitcoin":
 				$output = $digit * 0.000059;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#8383;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>&#8383".$output."</label></center>";
 			break;
 			
 			case "Dollar australien":
 				$output = $digit * 1.56;
-				echo"<center><label class='text-success' style='font-size:25px;'>$;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>&#165".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":
 				$output = $digit * 142.6;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>&#165".$output."</label></center>";
 			break;
 		}
 	}
