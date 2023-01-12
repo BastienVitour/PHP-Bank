@@ -4,7 +4,6 @@ session_start();
 if (!isset($_SESSION['logged'])){
     header('Location: login.php');
 }
-  
 
 $userId = $_SESSION['logged'];
 
@@ -30,15 +29,14 @@ if (userVerif($db, $accountId, $userId)) {
   $account = getAccount($db, $accountId);
   $Transfer = execCounterTransfer($db, $accountId, $type, $amount);
   $account = getAccount($db, $accountId);
-
 } else {
     header('Location: login.php');
 }
 
-
 $uName =($_SESSION['uName']);
 $cnxState = 'Deconnexion';
 $title = "Opération sur " . $account['a_type'] . " - " . $account['a_number'];
+
 //include "view/template/header.php";
 
 //require "view/guichetView.php";
