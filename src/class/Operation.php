@@ -1,0 +1,33 @@
+<?php
+
+class Operation {
+
+    public $id;
+    public $id_bank_account;
+    public $receiver_account;
+    public $value;
+    public $id_currencies;
+    public $status;
+
+    public static function createBankOp($id_bank_account, $value, $admin_id, $status) {
+        $operation = new Operation();
+        $operation->id_bank_account = $id_bank_account;
+        $operation->value = $value;
+        $operation->admin_id = $admin_id;
+        $operation->status = $status;
+        return $operation;
+    }
+
+    public static function createUserOp($sender_account, $receiver_account, $value, $id_currencies, $status) {
+        $operation = new Operation();
+        $operation->id_bank_account = $id_bank_account;
+        $operation->receiver_account = $receiver_account;
+        $operation->value = $value;
+        $operation->id_currencies = $id_currencies;
+        $operation->status = $status;
+        return $operation;
+    }
+
+    
+
+}

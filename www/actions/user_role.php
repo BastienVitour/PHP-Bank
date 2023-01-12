@@ -30,7 +30,4 @@ if (isset($_POST['ban'])) {
     }
 }
 
-// on verra pourquoi on ne stock que l'id
-//$_SESSION['user_id'] = $user->id;
-
 header('Location: /?page=account_verification');

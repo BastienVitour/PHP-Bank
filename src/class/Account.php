@@ -15,14 +15,4 @@ class Account {
         return $account;
     }
 
-    /*public function verifyPassword($password) {
-        $hashPassword = hash('sha256', $password);
-        return ($hashPassword === $this->password);
-    }
-
-    public function getCreatedAt() {
-        $date = new DateTime($this->created_at);
-        return $date->format('d/m/Y H:i:s');
-    }*/
-
 }

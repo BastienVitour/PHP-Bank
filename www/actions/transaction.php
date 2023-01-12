@@ -19,7 +19,9 @@ if ($utilisateur['role'] < 10) {
     error_die('Vous ne pouvez pas envoyer d\'argent à cet utilisateur', '/?page=operations/transaction');
 }
 
-$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$operationManager->transaction($_SESSION['user_id'], $utilisateur['id'], $_POST['sum']);
+
+/*$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $stmh->execute([$_SESSION['user_id']]);
 $user_withdraw = $stmh->fetch();
 
@@ -33,10 +35,9 @@ $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $stmh->execute([$utilisateur['id']]);
 $user_deposit = $stmh->fetch();
 
-//$money_usr = intval($_POST['deposit']);
 $new_money = $user_deposit['money'] + $money_usr;
 
 $stmh = $db->prepare('UPDATE bankaccounts SET money = ? WHERE id_user = ?');
-$stmh->execute([$new_money, $utilisateur['id']]);
+$stmh->execute([$new_money, $utilisateur['id']]);*/
 
 header('Location: /?page=operations/transaction');

@@ -24,11 +24,6 @@ foreach ($utilisateur as $usr) {
     $user_role = array_search($usr['role'], $config);
     echo 'Utilisateur : ' . $usr['email'] . ';    Role : ' . $config['roles'][$usr['role']] . '<br>'; ?>
 
-    <!--<form action="/actions/user_role.php" method="post">
-        <button name="verify" class="verify" id="<?=$usr['id']?>">Vérifier</button>
-        <button name="ban" class="ban" id="<?=$usr['id']?>">Bannir</button>
-    </form>-->
-    
 <?php
 }
 ?>

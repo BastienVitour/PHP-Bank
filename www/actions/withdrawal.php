@@ -8,12 +8,9 @@ if ($_POST['retrait'] == "0") {
 
 $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $stmh->execute([$_SESSION['user_id']]);
-$utilisateur = $stmh->fetch();
+$usr_deposit = $stmh->fetch();
 
-$money_usr = intval($_POST['retrait']);
-$new_money = $utilisateur['money'] - $money_usr;
-
-$stmh = $db->prepare('UPDATE bankaccounts SET money = ? WHERE id = ?');
-$stmh->execute([$new_money, $utilisateur['id']]);
+$operation_deposit = Operation::createBankOp($usr_deposit['id'], $_POST['retrait'], 1, 50);
+$opId = $operationManager->insertBankOp($operation_deposit, 'withdrawals');
 
 header('Location: /?page=operations/withdraw');

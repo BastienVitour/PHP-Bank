@@ -10,6 +10,7 @@
 
         <li><a href="/?page=profile">Profile</a></li>
         <li><a href="/?page=account_verification">Vérifier compte</a></li>
+        <li><a href="/?page=operation_verification">Vérifier opérations</a></li>
         <li><a href="/?page=operations">Opérations</a></li>        
         <li><a href="/actions/logout.php">Logout</a></li>
 

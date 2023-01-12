@@ -1,5 +1,7 @@
 <?php
 
+$page_title = "Retraits";
+
 ob_start();
 
 ?>
