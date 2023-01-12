@@ -12,12 +12,17 @@ ob_start();
 
 <?php
 
-if ($user !== false) {
+if ($user != false) {
+
     if ($user->role == 1) { ?>
 
-    <h3>Votre compte est en cours de vérification par un administrateur</h3>
+        <h3>Votre compte est en cours de vérification par un administrateur</h3>
     
-<?php }
+    <?php } else if ($user->role > 1){ ?>
+
+        <h3>Votre compte en banque : <? $_SESSION['money']?></h3>
+
+    <?php }
 }
 
 $page_content = ob_get_clean();
