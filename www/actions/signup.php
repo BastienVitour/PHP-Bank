@@ -28,13 +28,10 @@ if ($alreadyUser !== false) {
     error_die('Déjà inscrit', '/?page=signup');
 }
 
-$user = User::create($_POST['fullname'], $_POST['email'], $_POST['password'], 1, $_SERVER['REMOTE_ADDR']);
+$user = User::create($_POST['fullname'], $_POST['email'], $_POST['password'], 1000, $_SERVER['REMOTE_ADDR']);
 $userId = $userManager->insert($user);
 
-$account = Account::createAccount($userId, 0, 1);
-$accountId = $accountManager->insertAccount($account);
-
 $_SESSION['user_id'] = $userId;
-$_SESSION['account_id'] = $accountId;
+//$_SESSION['account_id'] = $accountId;
 
 header('Location: /?page=home');

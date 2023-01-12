@@ -8,11 +8,22 @@ ob_start();
 
 ?>
 
-<h1>Titre de la page d'accueil</h1>
+<h1>Page d'accueil</h1>
 
 <?php
 
+if ($user !== false) {
+    if ($user->role == 0) { ?>
+
+    <h2>Votre compte a été banni</h2>
+    <p><?=$user->role?></p>
+<?php }
+}
+
+
 echo '<p>'.var_dump($user).'</p>';
+
+
 
 if (isset($_SESSION['user_id'])) {
     echo '<p>'.$_SESSION['user_id'].'</p>';
