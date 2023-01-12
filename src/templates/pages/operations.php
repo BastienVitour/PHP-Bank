@@ -15,6 +15,8 @@ ob_start();
 <li><a href="/?page=operations/transaction">Envoi d'argent</a></li>
 <li><a href="/?page=operations/conversion">Conversion de monnaies</a></li>
 
+
+
 <?php
 
 $page_content = ob_get_clean();
