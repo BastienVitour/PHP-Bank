@@ -1,33 +1,35 @@
+<?php 
+
+$page_title = "Transactions";
+
+ob_start();
+
+?>
+
+<h1>Envoyer de l'argent</h1>
 <?php
-// If user's not logged then go to login page
-if (!isset($_SESSION['user_id']))
-  header('Location: /?page=login');
+include_once __DIR__ . '/../../partials/alert_errors.php';
+include_once __DIR__ . '/../../partials/alert_success.php';
+?>
 
-$userId = $_SESSION['user_id'];
+<form action="/actions/transaction.php" method="post">
 
-// check POST data validity
-$accountDebit = $accountCredit = $amount = '';
+  <div>
+      <label for="value">Somme à envoyer : </label>
+      <input type="text" name="sum">
+  </div>
 
-if(isset($_POST['accountDebit']) && !empty($_POST['accountDebit'])) 
-  $accountDebit = htmlspecialchars($_POST['accountDebit']);
+    <h3>Receveur</h3>
 
-if(isset($_POST['accountCredit']) && !empty($_POST['accountCredit'])) 
-  $accountCredit = htmlspecialchars($_POST['accountCredit']);
+  <div>
+      <label for="email">Adresse mail : </label>
+      <input type="text" name="email">
+</div>
 
-if(isset($_POST['amount']) && !empty($_POST['amount'])) 
-  $amount = htmlspecialchars($_POST['amount']);
+    <button type="submit">Envoyer</button>
 
+</form>
 
-//require_once "view/template/database.php";
-//$db = dbConnect();
-//$accounts = getAccounts($db, $userId);
-//$Transfer = execTransfer($db, $accountDebit, $accountCredit, $amount);
+<?php
 
-//$uName =($_SESSION['uName']);
-$cnxState = 'Deconnexion';
-$title = "Effectuer un virement";
-//include "view/template/header.php";
-
-//require "view/virementsView.php";
-
-//include "view/template/footer.php";
+$page_content = ob_get_clean();

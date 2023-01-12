@@ -8,7 +8,7 @@ require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/utils/errors.php';
 
 //pages existantes sur notre site internet
-$pages = ['home', 'login', 'signup', 'operations', 'operations/deposit', 'operations/withdraw', 'operations/transaction', 'operations/conversion',
+$pages = ['home', 'login', 'signup', 'operations', 'account_verification', 'operations/deposit', 'operations/withdraw', 'operations/transaction', 'operations/conversion',
 'operations/conversion/Bitcoin', 'operations/conversion/Euro', 'operations/conversion/Dollar'
 
 ];
