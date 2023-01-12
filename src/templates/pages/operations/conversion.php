@@ -24,7 +24,7 @@ ob_start();
 				<option value="">Selection de la monnaie</option>
 				<option value="Dollar americain">Dollar americain</option>
 				<option value="Livre Sterling">Livre Sterling</option>
-				<option value="Dollar canadien">Dollar canadien</option>
+				<option value="Bitcoin">Bitcoin</option>
 				<option value="Dollar australien">Dollar australien</option>
 				<option value="Yen japonais">Yen japonais</option>
 			</select>
@@ -33,6 +33,7 @@ ob_start();
 			<br />
 			
 		</div>
+		
 	</form>
 </div>
 
@@ -52,14 +53,14 @@ if(ISSET($_POST['btn_submit'])){
 				echo"<center><label class='text-success' style='font-size:25px;'>£".$output."</label></center>";
 			break;
 			
-			case "Dollar canadien":
-				$output = $digit * 1.44;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#163;".$output."</label></center>";
+			case "Bitcoin":
+				$output = $digit * 0.000059;
+				echo"<center><label class='text-success' style='font-size:25px;'>&#8383;".$output."</label></center>";
 			break;
 			
 			case "Dollar australien":
 				$output = $digit * 1.56;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>$;".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":
