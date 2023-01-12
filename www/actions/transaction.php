@@ -21,23 +21,16 @@ if ($utilisateur['role'] < 10) {
 
 $operationManager->transaction($_SESSION['user_id'], $utilisateur['id'], $_POST['sum']);
 
-/*$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $stmh->execute([$_SESSION['user_id']]);
-$user_withdraw = $stmh->fetch();
-
-$money_usr = intval($_POST['sum']);
-$new_money = $user_withdraw['money'] - $money_usr;
-
-$stmh = $db->prepare('UPDATE bankaccounts SET money = ? WHERE id_user = ?');
-$stmh->execute([$new_money, $_SESSION['user_id']]);
+$usr_transaction = $stmh->fetch();
 
 $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
 $stmh->execute([$utilisateur['id']]);
-$user_deposit = $stmh->fetch();
+$receiver_transaction = $stmh->fetch();
 
-$new_money = $user_deposit['money'] + $money_usr;
-
-$stmh = $db->prepare('UPDATE bankaccounts SET money = ? WHERE id_user = ?');
-$stmh->execute([$new_money, $utilisateur['id']]);*/
+//$operationManager->createUserOp($sender_account, $receiver_account, $value, $id_currencies);
+$operation_transaction = Operation::createUserOp($usr_transaction['id'], $receiver_transaction['id'], $_POST['sum'], 1);
+$opId = $operationManager->insertUserOp($operation_transaction);
 
 header('Location: /?page=operations/transaction');

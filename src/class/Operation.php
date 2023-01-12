@@ -18,13 +18,12 @@ class Operation {
         return $operation;
     }
 
-    public static function createUserOp($sender_account, $receiver_account, $value, $id_currencies, $status) {
+    public static function createUserOp($sender_account, $receiver_account, $value, $id_currencies) {
         $operation = new Operation();
-        $operation->id_bank_account = $id_bank_account;
+        $operation->id_bank_account = $sender_account;
         $operation->receiver_account = $receiver_account;
         $operation->value = $value;
         $operation->id_currencies = $id_currencies;
-        $operation->status = $status;
         return $operation;
     }
 

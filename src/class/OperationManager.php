@@ -16,9 +16,9 @@ class OperationManager {
 	}
 
     public function insertUserOp(Operation $operation) {
-		$stmh = $this->db->prepare('INSERT INTO transactions(sender_account, receiver_account, value, id_currencies, status) VALUES(?, ?, ?, ? ,?)');
+		$stmh = $this->db->prepare('INSERT INTO transactions(sender_account, receiver_account, value, id_currencies) VALUES(?, ?, ?, ?)');
 		$stmh->execute([
-			$operation->id_bank_account, $operation->receiver_account, $operation->value, $operation->id_currencies, $operation->status
+			$operation->id_bank_account, $operation->receiver_account, $operation->value, $operation->id_currencies
 		]);
 		return $this->db->lastInsertId();
 	}
