@@ -22,6 +22,7 @@
     <?php } else if ($user->role > 0){ ?>
 
         <li><a href="/?page=profile">Profile</a></li>
+        <li><a href="/actions/logout.php">Logout</a></li>
 
     <?php } else { ?>
 

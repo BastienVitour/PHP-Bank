@@ -12,10 +12,12 @@ ob_start();
 
 <?php
 
-if ($user->role == 0) { ?>
+if ($user !== false) {
+    if ($user->role == 1) { ?>
 
-    <h2>Votre compte a été banni</h2>
-
+    <h3>Votre compte est en cours de vérification par un administrateur</h3>
+    
 <?php }
+}
 
 $page_content = ob_get_clean();

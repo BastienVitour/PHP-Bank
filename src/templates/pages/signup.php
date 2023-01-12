@@ -37,6 +37,18 @@ ob_start();
         <input type="password" id="cpassword" name="cpassword">
     </div>
 
+    <h3>Rôles supérieurs</h3>
+
+    <div class="form_input">
+        <label for="manager_key">Clé Manager</label>
+        <input type="text" id="manager" name="manager">
+    </div>
+
+    <div class="form_input">
+        <label for="admin_key">Clé Admin</label>
+        <input type="text" id="admin" name="admin">
+    </div>
+
     <button type="submit">Signup</button>
 
 </form>
