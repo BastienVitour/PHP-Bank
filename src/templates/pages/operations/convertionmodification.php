@@ -5,21 +5,21 @@
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
 	</head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+	<nav>
+		<div >
 			
 		</div>
 	</nav>
-	<div class="col-md-3"></div>
-	<div class="col-md-6 well">
-		<h3 class="text-primary">Euro convertiseur</h3>
+	<div></div>
+	<div>
+		<h3>Euro convertiseur</h3>
 		<hr style="border-top:1px dotted #000;"/>
 		<form method="GET" action="">
-			<div class="form-inline">
+			<div>
 				<label>Euro:</label>
-				<input class="form-control" type="text" name="txt_digit"/>
+				<input type="text" name="txt_digit"/>
 				<label>choix de la money: </label>
-				<select name="currency" class="form-control">
+				<select name="currency">
 					<option value="">Selection de l'option</option>
 					<option value="Dollar American">Dollar american</option>
 					<option value="livre steling">livre sterling</option>
@@ -28,7 +28,7 @@
 					<option value="yen japonais">yen japonais</option>
 				</select>
 				<br /><br />
-				<center><button type="submit" name="btn_submit" class="btn btn-primary form-control" style="width:30%;">Convertion</button></center>
+				<center><button type="submit" name="btn_submit" style="width:30%;">Convertion</button></center>
 				<br />
 				
 			</div>
@@ -63,7 +63,7 @@
 				
 				case "yen japonais":
 					$output = $digit * 142.6;
-					echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+					echo"<center><label class='text-success' style='font-size:25px;'>&#8383;".$output."</label></center>";
 				break;
 			}
 		}
