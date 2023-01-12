@@ -51,7 +51,7 @@ if(ISSET($_POST['btn_submit'])){
 			break;
 			
 			case "Livre Sterling":
-				$output = $digit * 15031.0.1;
+				$output = $digit * 15031.01;
 				echo"<center><label class='text-success' style='font-size:25px;'>£".$output."</label></center>";
 			break;
 			
@@ -62,7 +62,7 @@ if(ISSET($_POST['btn_submit'])){
 			
 			case "Dollar australien":
 				$output = $digit * 26430.05;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'$".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":

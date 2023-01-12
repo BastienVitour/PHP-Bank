@@ -46,8 +46,8 @@ if(ISSET($_POST['btn_submit'])){
 	if($digit != ""){
 		switch($currency){
 			case "Euro":
-				$output = $digit * 0.93;
-				echo"<center><label class='text-success' style='font-size:25px;'€".$output."</label></center>";
+				$output = $digit * 0.92;
+				echo"<center><label class='text-success' style='font-size:25px;'>€".$output."</label></center>";
 			break;
 			
 			case "Livre Sterling":
@@ -62,7 +62,7 @@ if(ISSET($_POST['btn_submit'])){
 			
 			case "Dollar australien":
 				$output = $digit * 1.45;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>$;".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":

@@ -62,7 +62,7 @@ if(ISSET($_POST['btn_submit'])){
 			
 			case "Dollar australien":
 				$output = $digit * 1.56;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'$".$output."</label></center>";
 			break;
 			
 			case "Yen japonais":
