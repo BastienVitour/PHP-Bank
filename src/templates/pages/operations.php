@@ -20,6 +20,8 @@ ob_start();
 
 
 
+
+
 <?php
 
 $page_content = ob_get_clean();
