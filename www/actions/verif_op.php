@@ -2,6 +2,8 @@
 
 require_once __DIR__ . "/../../src/init.php";
 
+error_die($_SESSION['user_id'],  '/?page=operation_verification');
+
 //Pour les dépôts
 if (isset($_POST['accept_d'])) {
     if (!empty($_POST['select_d'])) {
@@ -14,8 +16,9 @@ if (isset($_POST['accept_d'])) {
         
         $operationManager->deposit($things[0], $utilisateur['value']);
 
-        $stmh = $db->prepare('UPDATE deposits SET status=100 WHERE id=? AND status=50');
+        $stmh = $db->prepare('UPDATE deposits SET status=100, admin_id=? WHERE id=? AND status=50');
         $stmh->execute([
+            $_SESSION['user_id'],
             $things[1]
         ]);
     }
@@ -29,8 +32,9 @@ if (isset($_POST['deny_d'])) {
 
         $things = explode(",", $_POST['select_d']);
 
-        $stmh = $db->prepare('UPDATE deposits SET status=0 WHERE id=? AND status=50');
+        $stmh = $db->prepare('UPDATE deposits SET status=0, admin_id=? WHERE id=? AND status=50');
         $stmh->execute([
+            $_SESSION['user_id'],
             $things[1]
         ]);
     }
@@ -53,8 +57,9 @@ if (isset($_POST['accept_w'])) {
         
         $operationManager->withdraw($_POST['select_w'], $utilisateur['value']);
 
-        $stmh = $db->prepare('UPDATE withdrawals SET status=100 WHERE id=?');
+        $stmh = $db->prepare('UPDATE withdrawals SET status=100, admin_id=? WHERE id=?');
         $stmh->execute([
+            $_SESSION['user_id'],
             $things[1]
         ]);
     }
@@ -68,8 +73,9 @@ if (isset($_POST['deny_w'])) {
 
         $things = explode(",", $_POST['select_w']);
 
-        $stmh = $db->prepare('UPDATE withdrawals SET status=0 WHERE id=?');
+        $stmh = $db->prepare('UPDATE withdrawals SET status=0, admin_id=? WHERE id=?');
         $stmh->execute([
+            $_SESSION['user_id'],
             $things[1]
         ]);
     }

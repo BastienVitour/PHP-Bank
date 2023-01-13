@@ -12,11 +12,11 @@ $usr_withdrawal = $stmh->fetch();
 
 if ($user->role >= 200) {
     $operationManager->withdraw($_SESSION['user_id'], $_POST['retrait']);
-    $operation_withdrawal = Operation::createBankOp($usr_withdrawal['id'], $_POST['retrait'], 1, 100);
+    $operation_withdrawal = Operation::createBankOp($usr_withdrawal['id'], $_POST['retrait'], 100);
     $opId = $operationManager->insertBankOp($operation_withdrawal, 'withdrawals');
 }
 else {
-    $operation_withdrawal = Operation::createBankOp($usr_withdrawal['id'], $_POST['retrait'], 1, 50);
+    $operation_withdrawal = Operation::createBankOp($usr_withdrawal['id'], $_POST['retrait'], 50);
     $opId = $operationManager->insertBankOp($operation_withdrawal, 'withdrawals');
 }
 

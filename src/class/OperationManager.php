@@ -8,9 +8,9 @@ class OperationManager {
 	}
 
 	public function insertBankOp(Operation $operation, $operation_name) {
-		$stmh = $this->db->prepare('INSERT INTO '.$operation_name.'(id_bank_account, value, admin_id, status) VALUES(?, ?, ?, ?)');
+		$stmh = $this->db->prepare('INSERT INTO '.$operation_name.'(id_bank_account, value, status) VALUES(?, ?, ?)');
 		$stmh->execute([
-			$operation->id_bank_account, $operation->value, $operation->admin_id, $operation->status
+			$operation->id_bank_account, $operation->value, $operation->status
 		]);
 		return $this->db->lastInsertId();
 	}

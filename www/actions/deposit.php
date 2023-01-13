@@ -14,11 +14,11 @@ $usr_deposit = $stmh->fetch();
 
 if ($user->role >= 200) {
     $operationManager->deposit($_SESSION['user_id'], $_POST['deposit']);
-    $operation_deposit = Operation::createBankOp($usr_deposit['id'], $_POST['deposit'], 1, 100);
+    $operation_deposit = Operation::createBankOp($usr_deposit['id'], $_POST['deposit'], 100);
     $opId = $operationManager->insertBankOp($operation_deposit, 'deposits');
 }
 else {
-    $operation_deposit = Operation::createBankOp($usr_deposit['id'], $_POST['deposit'], 1, 50);
+    $operation_deposit = Operation::createBankOp($usr_deposit['id'], $_POST['deposit'], 50);
     $opId = $operationManager->insertBankOp($operation_deposit, 'deposits');
 }
 
