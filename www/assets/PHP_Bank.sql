@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : ven. 13 jan. 2023 à 07:42
+-- Généré le : ven. 13 jan. 2023 à 08:09
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -61,7 +61,12 @@ CREATE TABLE `currencies` (
 --
 
 INSERT INTO `currencies` (`id`, `name`, `value`) VALUES
-(1, 'Euro', 1);
+(1, 'Euro', 1),
+(2, 'Bitcoin', 0.000059),
+(3, 'Dollar', 1.08),
+(4, 'Livre Sterling', 0.89),
+(5, 'Yen Japonais', 140.61),
+(6, 'Dollar australien', 1.56);
 
 -- --------------------------------------------------------
 
@@ -236,7 +241,7 @@ ALTER TABLE `bankaccounts`
 -- AUTO_INCREMENT pour la table `currencies`
 --
 ALTER TABLE `currencies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `deposits`
