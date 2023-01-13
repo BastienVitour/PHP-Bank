@@ -16,3 +16,9 @@ $config['roles'] = [
     200 => "Manager",
     1000 => "Admin"
 ];
+
+$config['status'] = [
+    0 => "Opération refusée",
+    50 => "Opération en cours d'analyse",
+    100 => "Opération effectuée"
+];

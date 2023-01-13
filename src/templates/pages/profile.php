@@ -20,7 +20,7 @@ if ($user != false) {
     
     <?php } else if ($user->role > 1){ ?>
 
-        <h3>Votre compte en banque : <? $_SESSION['money']?></h3>
+        <h3>Votre compte en banque : <? $_SESSION['money'] ?> </h3>
 
     <?php }
 }
