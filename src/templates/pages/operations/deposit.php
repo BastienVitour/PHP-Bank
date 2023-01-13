@@ -1,12 +1,11 @@
 <?php
 
+$page_title = "Dépôts";
+
 ob_start();
 
 include_once __DIR__ . '/../../partials/alert_errors.php';
 include_once __DIR__ . '/../../partials/alert_success.php';
-
-  //$valeur = (float)$nbr;
-  //echo $float; // Sortie: 5.21
 
 ?>
 

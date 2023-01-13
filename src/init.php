@@ -21,14 +21,17 @@ $page_scripts = "";
 //Inclure les classes
 require_once __DIR__ . '/class/User.php';
 require_once __DIR__ . '/class/Account.php';
+require_once __DIR__ . '/class/Operation.php';
 
 //Inclure les managers
 require_once __DIR__ . '/class/UserManager.php';
 require_once __DIR__ . '/class/AccountManager.php';
+require_once __DIR__ . '/class/OperationManager.php';
 
 //Initialiser les managers
 $userManager = new UserManager($db);
 $accountManager = new AccountManager($db);
+$operationManager = new OperationManager($db);
 
 //Session & Auth
 $user = false;
