@@ -77,7 +77,7 @@ foreach ($operation as $op) {
     echo '<p>';
     echo 'Demande de retrait n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
     '. Statut : ' . $config['status'][$op['status']] . '<br>';
-    echo '/<p>';
+    echo '</p>';
     
 
 }

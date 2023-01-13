@@ -39,6 +39,9 @@ if ($already_op !== false) { ?>
         </select>
     </div>
     <br>
+    <label for="other">Déposer une autre somme</label>
+    <input type="text" name="other">
+    <br>
     <br>
     <button type="submit">Déposer l'argent</button>
 
