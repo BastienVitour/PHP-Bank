@@ -2,7 +2,7 @@
 
 $page_title = "Connexion";
 
-$head_metas = "<link rel=stylesheet href=assets/CSS/".$page_title.".css";
+$head_metas = "<link rel=stylesheet href=assets/CSS/login.css>";
 
 ob_start();
 

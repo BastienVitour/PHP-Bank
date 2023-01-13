@@ -4,11 +4,17 @@ require_once __DIR__ . '/../../init.php';
 
 $page_title = "Profil";
 
+$head_metas = "<link rel=stylesheet href=assets/CSS/profil.css>";
+
 ob_start();
+
+$stmh = $db->prepare('SELECT fullname FROM users WHERE id = ?');
+        $stmh->execute([$_SESSION['user_id']]);
+        $user_name = $stmh->fetch();
 
 ?>
 
-<h1>Profil</h1>
+<h1><?=$user_name['fullname']?> </h1>
 
 <?php
 
@@ -33,7 +39,7 @@ if ($user != false) {
 
         <p>Vous avez <?=$actual_money['money']?> <?=$actual_currency['name']?>s sur votre compte</p>
 
-    <?php } 
+    <?php
 
         $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
         $stmh->execute([$_SESSION['user_id']]);
@@ -57,8 +63,8 @@ if ($user != false) {
         foreach ($last_deposits as $ld) {
             $date = new DateTime($ld['operation_date']);
             $date = $date->format('d/m/Y'.  ' à ' .'H:i');
-            echo 'Dépôt de '.$ld['value'].' Euros';
-            echo ' le '.$date.'<br>';
+            echo '<span class="operation">Dépôt de '.$ld['value'].' Euros';
+            echo ' le '.$date.'</span><br>';
         }
 
         ?>
@@ -74,8 +80,8 @@ if ($user != false) {
         foreach ($last_withdrawals as $lw) {
             $date = new DateTime($lw['operation_date']);
             $date = $date->format('d/m/Y'.  ' à ' .'H:i');
-            echo 'Retrait de '.$lw['value'].' Euros';
-            echo ' le '.$lw['operation_date'].'<br>';
+            echo '<span class="operation">Retrait de '.$lw['value'].' Euros';
+            echo ' le '.$date.'</span><br>';
         }
 
         ?>
@@ -106,8 +112,8 @@ if ($user != false) {
 
             //echo $receiver_name['fullname'];
 
-            echo 'Envoi de '.$lt['value'].' Euros à '.$receiver_name['fullname'];
-            echo ' le '.$date.'<br>';
+            echo '<span class="operation">Envoi de '.$lt['value'].' Euros à '.$receiver_name['fullname'];
+            echo ' le '.$date.'</span><br>';
 
         }
 
@@ -126,22 +132,19 @@ if ($user != false) {
             $stmh->execute([$lt['sender_account']]);
             $sender = $stmh->fetch();
 
-            //echo $lt['receiver_account'];
-
             $stmh = $db->prepare('SELECT * FROM users WHERE id=?');
             $stmh->execute([$sender['id_user']]);
             $sender_name = $stmh->fetch();
 
-            //echo $receiver_name['fullname'];
-
             $date = new DateTime($lt['operation_date']);
             $date = $date->format('d/m/Y'.  ' à ' .'H:i');
 
-            echo 'Reçu '.$lt['value'].' Euros de '.$sender_name['fullname'];
-            echo ' le '.$date.'<br>';
+            echo '<span class="operation">Reçu '.$lt['value'].' Euros de '.$sender_name['fullname'];
+            echo ' le '.$date.'</span><br>';
 
         } 
-        
     }
+        
+}
 
 $page_content = ob_get_clean();

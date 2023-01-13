@@ -12,6 +12,10 @@ ob_start();
 
 <?php
 
+if ($user->role < 200) {
+    header('Location: /?page=home');
+}
+
 include_once __DIR__ . '/../partials/alert_errors.php';
 include_once __DIR__ . '/../partials/alert_success.php';
 
@@ -32,7 +36,7 @@ foreach ($operation as $op) {
 
     $user_role = array_search($op['status'], $config);
     echo '<p>';
-    echo 'Opération n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
+    echo 'Demande de dépôt n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
     '. Statut : ' . $config['status'][$op['status']];
     echo '</p>';
 
@@ -70,10 +74,12 @@ $operation = $stmh->fetchAll();
 foreach ($operation as $op) {
 
     $user_role = array_search($op['status'], $config);
-    echo 'Opération n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
-    '. Statut : ' . $config['status'][$op['status']] . '<br>'; ?>
+    echo '<p>';
+    echo 'Demande de retrait n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
+    '. Statut : ' . $config['status'][$op['status']] . '<br>';
+    echo '/<p>';
     
-<?php
+
 }
 ?>
 

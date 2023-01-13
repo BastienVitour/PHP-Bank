@@ -2,7 +2,7 @@
 
 $page_title = "Inscription";
 
-$head_metas = "<link rel=stylesheet href=assets/CSS/".$page_title.".css";
+$head_metas = "<link rel=stylesheet href=assets/CSS/signup.css>";
 
 ob_start();
 
@@ -41,12 +41,12 @@ ob_start();
 
     <div class="form_input">
         <label for="manager_key">Clé Manager</label>
-        <input type="text" id="manager" name="manager">
+        <input type="password" id="manager" name="manager">
     </div>
 
     <div class="form_input">
         <label for="admin_key">Clé Admin</label>
-        <input type="text" id="admin" name="admin">
+        <input type="password" id="admin" name="admin">
     </div>
 
     <button type="submit">Signup</button>

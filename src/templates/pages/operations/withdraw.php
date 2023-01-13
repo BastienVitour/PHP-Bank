@@ -16,6 +16,9 @@ if ($already_op !== false) { ?>
 <?php
 } else {
 
+
+include_once __DIR__ . '/../../partials/alert_errors.php';
+include_once __DIR__ . '/../../partials/alert_success.php';
 ?>
 
 <form action="/actions/withdrawal.php" method="post">
