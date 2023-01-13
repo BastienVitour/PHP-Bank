@@ -1,6 +1,6 @@
 <?php
 
-$page_title = "Conversion ";
+$page_title = "Conversion";
 
 ob_start();
 

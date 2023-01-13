@@ -13,7 +13,7 @@ ob_start();
 <li><a href="/?page=operations/deposit">Dépôt d'argent</a></li>
 <li><a href="/?page=operations/withdraw">Retrait d'argent</a></li>
 <li><a href="/?page=operations/transaction">Envoi d'argent</a></li>
-<li><a href="/?page=operations/convertsionDevise">Conversion des devises</a></li>
+<li><a href="/?page=operations/conversion">Conversion des devises</a></li>
 
 
 

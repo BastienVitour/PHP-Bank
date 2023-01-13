@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../init.php';
 
-$page_title = "Profile";
+$page_title = "Profil";
 
 ob_start();
 
@@ -29,36 +29,119 @@ if ($user != false) {
         $actual_currency = $stmh->fetch();
         ?>
 
-        <h3>Votre compte en banque : <? $actual_money . $actual_currencie ?> </h3>
+        <h3>Votre compte en banque : </h3>
 
-        <p>Vous avez <?=$actual_money['money']?> <?=$actual_currency['name']?> sur votre compte</p>
+        <p>Vous avez <?=$actual_money['money']?> <?=$actual_currency['name']?>s sur votre compte</p>
 
     <?php } 
-    
-        $stmh = $db->prepare('SELECT * FROM deposits WHERE id_user = ?');
-        $stmh->execute([$_SESSION['user_id']]);
-        $last_depot = $stmh->fetch();
-        
-        $stmh = $db->prepare('SELECT * FROM withdrawal WHERE id_user = ?');
-        $stmh->execute([$_SESSION['user_id']]);
-        $last_withdrawal = $stmh->fetch();
 
-        $tabl = $db->prepare("SELECT date1, SUM(deposits.column1) as column1_sum, SUM(withdrawal.column2) as column2_sum, SUM(transactions.column3) as column3_sum
-        FROM deposits
-        JOIN withdrawal AND transactions ON deposits.id = withdrawal.id = transactions.id
-        GROUP BY date1");
-       
-
+        $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
         $stmh->execute([$_SESSION['user_id']]);
-        $last_withdrawal = $stmh->fetch();
+        $usr_profile = $stmh->fetch();
+
         ?>
 
-    <table>
-        <?php for($i = 0 ; $tabl >= 11 ; $i++){
-            
-        }?>
-    </table>
+        <h2>Dernières opérations</h2>
+
+        <h3>Dépôts</h3>
+
+        <?php
+
+        $stmh = $db->prepare('SELECT * FROM deposits WHERE id_bank_account=? AND status=100 ORDER BY operation_date DESC LIMIT 10');
+        $stmh->execute([$usr_profile['id']]);
+        $last_deposits = $stmh->fetchAll();
+
+        /*$date = new DateTime($this->created_at);
+        return $date->format('d/m/Y'. 'à' .'H:i');*/
+
+        foreach ($last_deposits as $ld) {
+            $date = new DateTime($ld['operation_date']);
+            $date = $date->format('d/m/Y'.  ' à ' .'H:i');
+            echo 'Dépôt de '.$ld['value'].' Euros';
+            echo ' le '.$date.'<br>';
+        }
+
+        ?>
+
+        <h3>Retraits</h3>
+
+        <?php
+
+        $stmh = $db->prepare('SELECT * FROM withdrawals WHERE id_bank_account=? AND status=100 ORDER BY operation_date DESC LIMIT 10');
+        $stmh->execute([$usr_profile['id']]);
+        $last_withdrawals = $stmh->fetchAll();
+
+        foreach ($last_withdrawals as $lw) {
+            $date = new DateTime($lw['operation_date']);
+            $date = $date->format('d/m/Y'.  ' à ' .'H:i');
+            echo 'Retrait de '.$lw['value'].' Euros';
+            echo ' le '.$lw['operation_date'].'<br>';
+        }
+
+        ?>
+
+        <h3>Transactions</h3>
+
+        <h4>Effectuées</h4>
+
+        <?php
+
+        $stmh = $db->prepare('SELECT * FROM transactions WHERE sender_account=? ORDER BY operation_date DESC LIMIT 10');
+        $stmh->execute([$usr_profile['id']]);
+        $last_transactions = $stmh->fetchAll();
+
+        foreach ($last_transactions as $lt){
+            $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id=?');
+            $stmh->execute([$lt['receiver_account']]);
+            $receiver = $stmh->fetch();
+
+            //echo $lt['receiver_account'];
+
+            $stmh = $db->prepare('SELECT * FROM users WHERE id=?');
+            $stmh->execute([$receiver['id_user']]);
+            $receiver_name = $stmh->fetch();
+
+            $date = new DateTime($lt['operation_date']);
+            $date = $date->format('d/m/Y'.  ' à ' .'H:i');
+
+            //echo $receiver_name['fullname'];
+
+            echo 'Envoi de '.$lt['value'].' Euros à '.$receiver_name['fullname'];
+            echo ' le '.$date.'<br>';
+
+        }
+
+        ?>
+
+        <h4>Reçues</h4>
+
+        <?php
+
+        $stmh = $db->prepare('SELECT * FROM transactions WHERE receiver_account=? ORDER BY operation_date DESC LIMIT 10');
+        $stmh->execute([$usr_profile['id']]);
+        $last_transactions = $stmh->fetchAll();
+
+        foreach ($last_transactions as $lt){
+            $stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id=?');
+            $stmh->execute([$lt['sender_account']]);
+            $sender = $stmh->fetch();
+
+            //echo $lt['receiver_account'];
+
+            $stmh = $db->prepare('SELECT * FROM users WHERE id=?');
+            $stmh->execute([$sender['id_user']]);
+            $sender_name = $stmh->fetch();
+
+            //echo $receiver_name['fullname'];
+
+            $date = new DateTime($lt['operation_date']);
+            $date = $date->format('d/m/Y'.  ' à ' .'H:i');
+
+            echo 'Reçu '.$lt['value'].' Euros de '.$sender_name['fullname'];
+            echo ' le '.$date.'<br>';
+
+        } 
         
-<?php }
+    }
 
 $page_content = ob_get_clean();

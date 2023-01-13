@@ -27,6 +27,9 @@ class Operation {
         return $operation;
     }
 
-    
+    public function getOperationDate() {
+        $date = new DateTime($this->created_at);
+        return $date->format('d/m/Y'. 'à' .'H:i');
+    }
 
 }
