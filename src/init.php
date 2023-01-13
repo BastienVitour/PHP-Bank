@@ -9,7 +9,7 @@ require_once __DIR__ . '/utils/errors.php';
 
 //pages existantes sur notre site internet
 $pages = ['home', 'login', 'signup', 'operations', 'account_verification', 'operations/deposit', 'operations/withdraw', 'operations/transaction', 'operations/conversion',
-'operations/conversion/Bitcoin', 'operations/conversion/Euro', 'operations/conversion/Dollar', 'operation_verification'
+'operations/conversion/Bitcoin', 'operations/conversion/Euro', 'operations/conversion/Dollar', 'operation_verification', 'profile'
 
 ];
 
