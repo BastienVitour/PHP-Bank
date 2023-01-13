@@ -7,6 +7,22 @@ ob_start();
 include_once __DIR__ . '/../../partials/alert_errors.php';
 include_once __DIR__ . '/../../partials/alert_success.php';
 
+/*$alreadyUser = $userManager->getByEmail($_POST['email']);
+if ($alreadyUser !== false) {
+    error_die('Déjà inscrit', '/?page=signup');
+}*/
+
+$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$stmh->execute([$_SESSION['user_id']]);
+$usr_deposit = $stmh->fetch();
+
+$already_op = $operationManager->getByOperation('deposits', $usr_deposit['id']);
+if ($already_op !== false) { ?>
+    
+    <h3>Vous avez déjà une demande de dépôt en cours</h3>
+
+<?php
+} else {
 ?>
 
 <form action="/actions/deposit.php" method="post" >
@@ -23,15 +39,13 @@ include_once __DIR__ . '/../../partials/alert_success.php';
         </select>
     </div>
     <br>
-    <div>
-        <label for="">Somme autre :</label>
-        <input type="number">
-    </div>
     <br>
     <button type="submit">Déposer l'argent</button>
 
 </form>
 
 <?php
+
+}
 
 $page_content = ob_get_clean();

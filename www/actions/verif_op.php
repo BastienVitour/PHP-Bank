@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../../src/init.php";
 
-error_die($_SESSION['user_id'],  '/?page=operation_verification');
+//error_die($_SESSION['user_id'],  '/?page=operation_verification');
 
 //Pour les dépôts
 if (isset($_POST['accept_d'])) {
@@ -11,7 +11,7 @@ if (isset($_POST['accept_d'])) {
         $things = explode(",", $_POST['select_d']);
 
         $stmh = $db->prepare('SELECT * FROM deposits WHERE id = ?');
-        $stmh->execute([$_POST['select_d']]);
+        $stmh->execute([$things[1]]);
         $utilisateur = $stmh->fetch();
         
         $operationManager->deposit($things[0], $utilisateur['value']);
@@ -52,10 +52,10 @@ if (isset($_POST['accept_w'])) {
         $things = explode(",", $_POST['select_w']);
 
         $stmh = $db->prepare('SELECT * FROM withdrawals WHERE id = ?');
-        $stmh->execute($things[0]);
+        $stmh->execute($things[1]);
         $utilisateur = $stmh->fetch();
         
-        $operationManager->withdraw($_POST['select_w'], $utilisateur['value']);
+        $operationManager->withdraw($things[0], $utilisateur['value']);
 
         $stmh = $db->prepare('UPDATE withdrawals SET status=100, admin_id=? WHERE id=?');
         $stmh->execute([

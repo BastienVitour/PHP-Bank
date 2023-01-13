@@ -28,7 +28,7 @@ class OperationManager {
         $stmh->execute([$user_id]);
         $utilisateur = $stmh->fetch();
 
-        $money_usr = intval($value);
+        $money_usr = floatval($value);
         $new_money = $utilisateur['money'] + $money_usr;
 
         $stmh = $this->db->prepare('UPDATE bankaccounts SET money = ? WHERE id = ?');
@@ -41,7 +41,7 @@ class OperationManager {
         $stmh->execute([$user_id]);
         $utilisateur = $stmh->fetch();
 
-        $money_usr = intval($value);
+        $money_usr = floatval($value);
         $new_money = $utilisateur['money'] - $money_usr;
 
         $stmh = $this->db->prepare('UPDATE bankaccounts SET money = ? WHERE id = ?');
@@ -52,5 +52,15 @@ class OperationManager {
         $this->withdraw($sender_id, $value);
         $this->deposit($receiver_id, $value);
     }
+
+    public function getByOperation($operation, $id) {
+		$stmh = $this->db->prepare('SELECT * FROM '.$operation.' WHERE id_bank_account = ? AND status=50');
+		$stmh->execute([
+            $id
+        ]);
+		$stmh->setFetchMode(PDO::FETCH_CLASS, 'Operation');
+		$op = $stmh->fetch();
+		return $op;
+	}
 
 }

@@ -4,6 +4,18 @@ $page_title = "Retraits";
 
 ob_start();
 
+$stmh = $db->prepare('SELECT * FROM bankaccounts WHERE id_user = ?');
+$stmh->execute([$_SESSION['user_id']]);
+$usr_deposit = $stmh->fetch();
+
+$already_op = $operationManager->getByOperation('withdrawals', $usr_deposit['id']);
+if ($already_op !== false) { ?>
+    
+    <h3>Vous avez déjà une demande de retrait en cours</h3>
+
+<?php
+} else {
+
 ?>
 
 <form action="/actions/withdrawal.php" method="post">
@@ -25,5 +37,6 @@ ob_start();
 </form>
 
 <?php
+}
 
 $page_content = ob_get_clean();
