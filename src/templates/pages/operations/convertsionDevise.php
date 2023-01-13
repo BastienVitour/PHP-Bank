@@ -7,12 +7,6 @@ ob_start();
 ?>
 
 
-<nav >
-	<div>
-		
-	</div>
-</nav>
-<div></div>
 <div>
 	<h3 >convertiseur de l'euro</h3>
 	<hr style="border-top:1px dotted #000;"/>
@@ -38,12 +32,8 @@ ob_start();
 	</form>
 </div>
 
-<nav >
-	<div>
-		
-	</div>
-</nav>
-<div></div>
+
+
 <div>
 	<h3 >convertiseur bitcoin</h3>
 	<hr style="border-top:1px dotted #000;"/>
@@ -69,12 +59,8 @@ ob_start();
 	</form>
 </div>
 
-<nav >
-	<div>
-		
-	</div>
-</nav>
-<div></div>
+
+
 <div>
 	<h3 >convertiseur du Dollar</h3>
 	<hr style="border-top:1px dotted #000;"/>
@@ -194,31 +180,35 @@ if(ISSET($_POST['d_submit'])){
 		switch($currency){
 			case "Euro":
 				$output = $digit * 0.92;
-				echo"<center><label class='text-success' style='font-size:25px;'>€".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>".$output."€</label></center>";
 			break;
 			
 			case "Livre Sterling":
 				$output = $digit * 0.82;
-				echo"<center><label class='text-success' style='font-size:25px;'>£".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>".$output."£</label></center>";
 			break;
 			
 			case "Bitcoin":
 				$output = $digit * 0.000055;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#8383;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>".$output."&#8383;</label></center>";
 			break;
 			
 			case "Dollar australien":
 				$output = $digit * 1.45;
-				echo"<center><label class='text-success' style='font-size:25px;'>$;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>".$output."$</label></center>";
 			break;
 			
 			case "Yen japonais":
 				$output = $digit * 130.54;
-				echo"<center><label class='text-success' style='font-size:25px;'>&#165;".$output."</label></center>";
+				echo"<center><label class='text-success' style='font-size:25px;'>".$output."&#165;</label></center>";
 			break;
 		}
 	}
 }
+
+
+
+
 
 
 $page_content = ob_get_clean();
