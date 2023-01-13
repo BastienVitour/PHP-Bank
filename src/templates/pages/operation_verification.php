@@ -31,10 +31,11 @@ $operation = $stmh->fetchAll();
 foreach ($operation as $op) {
 
     $user_role = array_search($op['status'], $config);
+    echo '<p>';
     echo 'Opération n°' . $op['id'] . ', demandée par '.$op['email'].', d\'une valeur de '.$op['value'].' '.$op['name'].
-    '. Statut : ' . $config['status'][$op['status']] . '<br>'; ?>
-    
-<?php
+    '. Statut : ' . $config['status'][$op['status']];
+    echo '</p>';
+
 }
 ?>
 

@@ -16,22 +16,17 @@ if ($user !== false) {
     if ($user->role == 0) { ?>
 
     <h2>Votre compte a été banni</h2>
-    <p><?=$user->role?></p>
+   
 <?php }
 }
 
 
-echo '<p>'.var_dump($user).'</p>';
+//echo '<p>'.var_dump($user).'</p>';
 
 
 
-if (isset($_SESSION['user_id'])) {
+/*if (isset($_SESSION['user_id'])) {
     echo '<p>'.$_SESSION['user_id'].'</p>';
-}
+}*/
 
 $page_content = ob_get_clean();
-
-//script de la page home
-ob_start();
-
-$page_scripts = ob_get_clean();

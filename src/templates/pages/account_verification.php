@@ -22,9 +22,11 @@ $utilisateur = $stmh->fetchAll();
 
 foreach ($utilisateur as $usr) {
     $user_role = array_search($usr['role'], $config);
-    echo 'Utilisateur : ' . $usr['email'] . ';    Role : ' . $config['roles'][$usr['role']] . '<br>'; ?>
+    echo '<p>';
+    echo 'Utilisateur : ' . $usr['email'] . ';    Role : ' . $config['roles'][$usr['role']];
+    echo '</p>';
 
-<?php
+
 }
 ?>
 
