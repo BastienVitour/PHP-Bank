@@ -15,7 +15,7 @@ if ($user->role >= 200) {
     $operation_withdrawal = Operation::createBankOp($usr_withdrawal['id'], $_POST['retrait'], 100);
     $opId = $operationManager->insertBankOp($operation_withdrawal, 'withdrawals');
 
-    $stmh = $db->prepare('SELECT id FROM withdrawals ORDER BY id DESC LIMIT 1;  ');
+    $stmh = $db->prepare('SELECT id FROM withdrawals ORDER BY id DESC LIMIT 1');
     $stmh->execute();
     $last_id = $stmh->fetch();
 

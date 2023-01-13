@@ -52,7 +52,7 @@ if (isset($_POST['accept_w'])) {
         $things = explode(",", $_POST['select_w']);
 
         $stmh = $db->prepare('SELECT * FROM withdrawals WHERE id = ?');
-        $stmh->execute($things[1]);
+        $stmh->execute([$things[1]]);
         $utilisateur = $stmh->fetch();
         
         $operationManager->withdraw($things[0], $utilisateur['value']);
